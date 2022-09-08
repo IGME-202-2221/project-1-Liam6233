@@ -4,8 +4,8 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Liam Curley
+-   Section: 06
 
 ## Game Design
 
