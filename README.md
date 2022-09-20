@@ -9,11 +9,11 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Side View
+-   Camera Movement: Camera does not move, objects and assets move giving the illusion of camera movement
+-   Player Health: health bar that slowly drains unless enemies are killed
+-   End Condition: Goal is to score X number of points
+-   Scoring: Killing an enemy: 20 points, 1 point for every second survived after the first 10 seconds
 
 ### Game Description
 
@@ -22,11 +22,11 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: W or Up Arrow
+    -   Down: S or Down Arrow
+    -   Left: A or Left Arrow
+    -   Right: D or Right Arrow
+-   Fire: Left Mouse Click or Space Bar
 
 ## You Additions
 
