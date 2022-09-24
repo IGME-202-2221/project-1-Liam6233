@@ -9,28 +9,34 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Camera has a side view.
+-   Camera Movement: The camera itself does not move, however the objects in the game move giving the illusion that the camera is moving from left to right
+-   Player Health: The player's health is is a life bar where the player can take 5 hits before a game over, if the player has lost health, scoring 150 points restores 1 health.
+-   End Condition: The goal of the game is to survive for as long as possible, therefore the end condition is when the player's health is at 0
+-   Scoring: player gains 20 points by destroying enemies, and 1 point gained for every second the player is alive.
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+Title: Last stand
+Description: You are the last ship in a fleet that was destroyed in a recent space battle between Humanity and an alien menace. Escape is impossible so you decide to go down fighting. Take on waves of enemies and survive for as long as possible to show those aliens why you shouldn't mess with humanity.
 
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: W or Up Arrow
+    -   Down: S or Down Arrow
+    -   Left: A or Left Arrow
+    -   Right: D or Right Arrow
+-   Fire/Menu Navigation: Spacebar or Left Mouse Button
+-   Pause: Tab
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+- Screen Bound Interactions: Top and Bottom of the screen wrap around like in Exercise 4, but left and right edges are hard borders that stop the player from going beyond them
+- Pause Menu so that player can take break during gameplay.
+- Using Point to Shape Collision for player bullets, where bullets move so fast that it behaves like hitscan
+- to compensate for player having a hitscan weapon, enemies with have unique movement patterns and will take multiple hits to kill
+- Player can shoot as fast as they can press spacebar or Left Mouse Button. No automatic fire
 
 ## Sources
 
