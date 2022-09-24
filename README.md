@@ -37,10 +37,15 @@ Description: You are the last ship in a fleet that was destroyed in a recent spa
 - Using Point to Shape Collision for player bullets, where bullets move so fast that it behaves like hitscan
 - to compensate for player having a hitscan weapon, enemies with have unique movement patterns and will take multiple hits to kill
 - Player can shoot as fast as they can press spacebar or Left Mouse Button. No automatic fire
+- Player can move vertically faster than they can move horizontally
 
 ## Sources
 
 -   _List all project sources here –models, textures, sound clips, assets, etc._
+1. Spaceship Model for player I got from OpenGameArt.org, 
+    https://opengameart.org/content/spaceship-360
+
+
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
 ## Known Issues
