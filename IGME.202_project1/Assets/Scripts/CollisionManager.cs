@@ -8,14 +8,16 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     GameObject ship;
 
+    [SerializeField]
+    GameObject playerBulletPrefab;
+
     SpriteRenderer shipColor;
 
     [SerializeField]
-    List<GameObject> obsticalList;
+    List<GameObject> enemyList;
 
+    public List<GameObject> bulletList;
 
-    // false = AABB true = Circle
-    bool collisionMethod = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,36 +29,58 @@ public class CollisionManager : MonoBehaviour
     void Update()
     {
         GameObject player = ship;
-        GameObject rock;
-        bool collision;
+        GameObject enemy;
+        bool playerCollision;
+        bool bulletCollision;
         shipColor.color = Color.white;
-        for (int i = 0; i < obsticalList.Count; i++)
-        {   
-            if(obsticalList[i] != null)
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i] != null)
             {
-                rock = obsticalList[i];
+                enemy = enemyList[i];
             }
             else
             {
-                obsticalList.RemoveAt(i);
+                enemyList.RemoveAt(i);
                 i--;
                 continue;
             }
             
-            collision = AABBCollision(player, rock);
+            playerCollision = AABBCollision(player, enemy);
             
-            if (collision)
+            if (playerCollision)
             {
                 shipColor.color = Color.red;
-                obsticalList[i].GetComponent<SpriteRenderer>().color = Color.red;
-                i = obsticalList.Count;
+                ship.GetComponent<Player>().LoseHealth();
+                enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
+                enemyList[i].GetComponent<Enemy>().TakeDamage();
+                i = enemyList.Count;
                 
             }
             else 
             {
-                obsticalList[i].GetComponent<SpriteRenderer>().color = Color.white;
+                enemyList[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
+
+            for(int j = 0; j < bulletList.Count; j++)
+            {
+                if(bulletList[j] != null)
+                {
+                    bulletCollision = AABBCollision(bulletList[j], enemy);
+                    if (bulletCollision)
+                    {
+                        enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
+                        enemyList[i].GetComponent<Enemy>().TakeDamage();
+                        bulletList[j].GetComponent<Bullet>().Alive = false;
+                       
+                     
+                    }
+                }
+                
+            }
+            
         }
+        //clearBulletList();
     }
 
     public bool AABBCollision(GameObject player, GameObject obstical)
@@ -75,4 +99,25 @@ public class CollisionManager : MonoBehaviour
         return areColliding;
     }
 
+    public void AddEnemyToList(Enemy obj)
+    {
+        enemyList.Add(obj.gameObject);
+    }
+
+    public void AddBulletToList(GameObject obj)
+    {
+        bulletList.Add(obj);
+    }
+
+    private void clearBulletList()
+    {
+        for(int i = 0; i < bulletList.Count; i++)
+        {
+            if (bulletList[i].GetComponent<Bullet>().Alive == false)
+            {
+                bulletList.RemoveAt(i);
+                i--;
+            }
+        }
+    }
 }

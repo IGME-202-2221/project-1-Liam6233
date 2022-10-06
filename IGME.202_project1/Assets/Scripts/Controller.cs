@@ -12,15 +12,11 @@ public class Controller : MonoBehaviour
     static float height;
     float width;
 
-
-
     Vector3 vehiclePosition = new Vector3(0, 0, 0);
 
 
     Vector3 direction = new Vector3(0, 0, 0);
     Vector3 velocity = Vector3.zero;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -69,9 +65,6 @@ public class Controller : MonoBehaviour
         //transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
-    public void OnFire(InputAction.CallbackContext context)
-    {
-           // fires a bullet when player presses correct button
-    }
+   
 
 }
