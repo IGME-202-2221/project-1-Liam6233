@@ -7,7 +7,11 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
 
     // list containing all enemies that exist
+    [SerializeField]
     List<Enemy> enemyList;
+
+    [SerializeField]
+    Enemy enemyPrefab;
 
     // reference to main camera
     Camera cam = Camera.main;
@@ -31,11 +35,12 @@ public class EnemyManager : MonoBehaviour
 
     private void clearEnemy(int index)
     {
-        
+        Destroy(enemyList[index]);
+        enemyList.RemoveAt(index);
     }
 
     private void SpawnEnemy()
     {
-
+       
     }
 }
