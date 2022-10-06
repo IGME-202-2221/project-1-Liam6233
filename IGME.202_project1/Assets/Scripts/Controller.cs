@@ -69,5 +69,9 @@ public class Controller : MonoBehaviour
         //transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
+    public void OnFire(InputAction.CallbackContext context)
+    {
+           // fires a bullet when player presses correct button
+    }
 
 }

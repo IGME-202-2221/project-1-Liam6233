@@ -31,8 +31,17 @@ public class CollisionManager : MonoBehaviour
         bool collision;
         shipColor.color = Color.white;
         for (int i = 0; i < obsticalList.Count; i++)
-        {
-            rock = obsticalList[i];
+        {   
+            if(obsticalList[i] != null)
+            {
+                rock = obsticalList[i];
+            }
+            else
+            {
+                obsticalList.RemoveAt(i);
+                i--;
+                continue;
+            }
             
             collision = AABBCollision(player, rock);
             
@@ -50,10 +59,6 @@ public class CollisionManager : MonoBehaviour
         }
     }
 
-    public void ChangeCollision()
-    {
-        collisionMethod = !collisionMethod;
-    }
     public bool AABBCollision(GameObject player, GameObject obstical)
     {
         bool areColliding = false;
@@ -70,19 +75,4 @@ public class CollisionManager : MonoBehaviour
         return areColliding;
     }
 
-    public bool CircleCollision(GameObject player, GameObject obstical)
-    {
-        bool isColliding = false;
-        float playerRad = player.GetComponent<SpriteRenderer>().bounds.extents.x;
-        float obRad = obstical.GetComponent<SpriteRenderer>().bounds.extents.y;
-
-        float distance = Mathf.Pow(player.transform.position.x - obstical.transform.position.x, 2) 
-            + Mathf.Pow(player.transform.position.y - obstical.transform.position.y, 2);
-        if ((playerRad + obRad) > Mathf.Sqrt(distance))
-        {
-            isColliding = true;
-
-        }
-        return isColliding;
-    }
 }
