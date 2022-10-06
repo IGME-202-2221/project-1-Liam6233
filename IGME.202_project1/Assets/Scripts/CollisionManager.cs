@@ -13,8 +13,6 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     List<GameObject> obsticalList;
 
-    [SerializeField]
-    GameObject colType; 
 
     // false = AABB true = Circle
     bool collisionMethod = false;
@@ -31,20 +29,13 @@ public class CollisionManager : MonoBehaviour
         GameObject player = ship;
         GameObject rock;
         bool collision;
-        for(int i = 0; i < obsticalList.Count; i++)
+        shipColor.color = Color.white;
+        for (int i = 0; i < obsticalList.Count; i++)
         {
             rock = obsticalList[i];
-            if (collisionMethod)
-            {
-                colType.GetComponent<TextMesh>().text = "Collision Mode: Circle Collision";
-                collision = CircleCollision(player, rock);
-            }
-            else
-            {
-                colType.GetComponent<TextMesh>().text = "Collision Mode: AABB Collision";
-                collision = AABBCollision(player, rock);
-            }
-
+            
+            collision = AABBCollision(player, rock);
+            
             if (collision)
             {
                 shipColor.color = Color.red;
@@ -54,7 +45,6 @@ public class CollisionManager : MonoBehaviour
             }
             else 
             {
-                shipColor.color = Color.white;
                 obsticalList[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
