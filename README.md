@@ -45,7 +45,8 @@ Description: You are the last ship in a fleet that was destroyed in a recent spa
 1. Spaceship Model for player I got from OpenGameArt.org, 
     https://opengameart.org/content/spaceship-360
 
-
+2. Sprite for projectile and enemy ships
+    https://opengameart.org/content/enemy-spaceship-2d-sprites-pixel-art
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
 ## Known Issues
