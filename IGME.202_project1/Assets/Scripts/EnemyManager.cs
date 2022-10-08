@@ -31,7 +31,6 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        
         if (enemyList.Count == 0)
         {
             SpawnEnemy();
@@ -39,10 +38,11 @@ public class EnemyManager : MonoBehaviour
         for(int i = 0; i < enemyList.Count; i++)
         {
             
-            if(i< 0)
+            if(i< 0 || i >= enemyList.Count)
             {
                 i = 0;
             }
+            
             if (enemyList[i].position.x <= cam.transform.position.x - width / 2)
             {
                 clearEnemy(i);
@@ -63,10 +63,9 @@ public class EnemyManager : MonoBehaviour
                 enemyList[i].position.y = cam.transform.position.y - height / 2;
             }
 
-            if (enemyList.Count != 0 && enemyList[i].Health == 0)
+            if (enemyList.Count != 0 && enemyList[i].Health <= 0)
             {
                 clearEnemy(i);
-
             }
 
         }
@@ -88,7 +87,5 @@ public class EnemyManager : MonoBehaviour
             enemyList.Add(newEnemy);
             colManager.AddEnemyToList(newEnemy);
         }
-        
-        
     }
 }

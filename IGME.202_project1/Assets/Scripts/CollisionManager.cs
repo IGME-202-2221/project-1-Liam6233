@@ -55,7 +55,6 @@ public class CollisionManager : MonoBehaviour
                 enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
                 enemyList[i].GetComponent<Enemy>().TakeDamage();
                 i = enemyList.Count;
-                
             }
             else 
             {
@@ -71,16 +70,12 @@ public class CollisionManager : MonoBehaviour
                     {
                         enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
                         enemyList[i].GetComponent<Enemy>().TakeDamage();
-                        bulletList[j].GetComponent<Bullet>().Alive = false;
-                       
-                     
                     }
                 }
                 
             }
-            
-        }
-        //clearBulletList();
+        }   
+        clearBulletList();
     }
 
     public bool AABBCollision(GameObject player, GameObject obstical)
@@ -113,10 +108,9 @@ public class CollisionManager : MonoBehaviour
     {
         for(int i = 0; i < bulletList.Count; i++)
         {
-            if (bulletList[i].GetComponent<Bullet>().Alive == false)
+            if (bulletList[i] == null)
             {
                 bulletList.RemoveAt(i);
-                i--;
             }
         }
     }

@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject bulletPrefab;
 
+    [SerializeField]
+    CollisionManager colManager;
+
     float iframes = 0;
     public int Health
     {
@@ -47,11 +50,10 @@ public class Player : MonoBehaviour
     {
         // fires a bullet when player presses correct button
         Vector2 bulletPosition = new Vector2(transform.position.x + GetComponent<SpriteRenderer>().bounds.size.x/2, transform.position.y);
-        if(Random.Range(0,1) <= 0.5)
+        if (context.performed)
         {
-            Instantiate(bulletPrefab, bulletPosition, Quaternion.identity, transform);
+            colManager.AddBulletToList(Instantiate(bulletPrefab, bulletPosition, Quaternion.identity));
         }
-        
     }
 
     public void LoseHealth()

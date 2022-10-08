@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     // enemies will have a set path that they take, it is randomly chosen 
     // out of a few set paths
     // they include 1 Sinwave,2 straight line (may be at angle) 
-    // 3 logarithmic, 
     // maybe 1 more
     public int movementType;
 
