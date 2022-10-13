@@ -52,6 +52,7 @@ Description: You are the last ship in a fleet that was destroyed in a recent spa
 ## Known Issues
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
+Enemy List in Collision Manager will occasionally get Index Out of bounds range error. However I don't know how to trigger it and it does not crash the program. it is also infrequent so I would just ignore them. I got 2 after 5 minutes of playing.
 
 ### Requirements not completed
 
