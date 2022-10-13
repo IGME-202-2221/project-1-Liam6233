@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9daf6d9b8a937404f9a640c78070c123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1249160046890731315, guid: ef4fc8106a9b6c9498c2efb1eb301847, type: 3}
+  health: 1
   position: {x: 0, y: 0}
   movementType: 0

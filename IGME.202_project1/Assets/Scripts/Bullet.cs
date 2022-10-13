@@ -32,4 +32,10 @@ public class Bullet : MonoBehaviour
         transform.position = position;
 
     }
+
+
+    public void AddToTimer()
+    {
+        timer += 100000000f;
+    }
 }

@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
    
-    int health = 30;
+    [SerializeField]
+    int health;
 
     public Vector2 position;
     Vector2 velocity = Vector2.zero;

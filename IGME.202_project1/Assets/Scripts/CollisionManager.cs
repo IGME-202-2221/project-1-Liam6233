@@ -70,6 +70,7 @@ public class CollisionManager : MonoBehaviour
                     {
                         enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
                         enemyList[i].GetComponent<Enemy>().TakeDamage();
+                        bulletList[j].GetComponent<Bullet>().AddToTimer();
                     }
                 }
                 
