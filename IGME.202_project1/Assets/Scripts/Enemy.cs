@@ -37,12 +37,12 @@ public class Enemy : MonoBehaviour
         // based on movement type, posisition is updated using different math functions
         if(movementType == 1)
         {
-            velocity.x = (-1.5f + randVelAddition)* Time.deltaTime ;
+            velocity.x = (-2.5f + randVelAddition)* Time.deltaTime ;
         }
         else if(movementType == 2)
         {
-            velocity.x = -2 * Time.deltaTime;
-            velocity.y = -1f * Mathf.Sin(Time.time) * Time.deltaTime;
+            velocity.x = -1.5f * Time.deltaTime;
+            velocity.y = -1.5f * Mathf.Sin(Time.time) * Time.deltaTime;
         }
         else if(movementType == 3)
         {
