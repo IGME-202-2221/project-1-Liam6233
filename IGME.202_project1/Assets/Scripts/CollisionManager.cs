@@ -109,15 +109,16 @@ public class CollisionManager : MonoBehaviour
         {
             areColliding = true;
             bullet.GetComponent<Bullet>().hitEnemy = true;
+            ship.GetComponent<Player>().score += 5;
         }
         return areColliding;
     }
 
 
 
-    public void AddEnemyToList(Enemy obj)
+    public void AddEnemyToList(GameObject obj)
     {
-        enemyList.Add(obj.gameObject);
+        enemyList.Add(obj);
     }
 
     public void AddBulletToList(GameObject obj)

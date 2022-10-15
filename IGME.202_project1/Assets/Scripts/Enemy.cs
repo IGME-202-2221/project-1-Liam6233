@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int health;
 
+    float tookDamage = 1;
+
     public Vector2 position;
     Vector2 velocity = Vector2.zero;
 
@@ -35,30 +37,41 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // based on movement type, posisition is updated using different math functions
-        if(movementType == 1)
+        if (movementType == 1)
         {
-            velocity.x = (-2.5f + randVelAddition)* Time.deltaTime ;
+            velocity.x = (-2.5f + randVelAddition) * Time.deltaTime;
         }
-        else if(movementType == 2)
+        else if (movementType == 2)
         {
             velocity.x = -1.5f * Time.deltaTime;
             velocity.y = -1.5f * Mathf.Sin(Time.time) * Time.deltaTime;
         }
-        else if(movementType == 3)
+        else if (movementType == 3)
         {
             velocity.x = -1.5f * Time.deltaTime;
             velocity.y = -1.5f * Time.deltaTime;
         }
-        else if(movementType == 4)
+        else if (movementType == 4)
         {
             velocity.x = -1.5f * Time.deltaTime;
             velocity.y = 1.5f * Time.deltaTime;
         }
         position += velocity;
         transform.position = position;
-    }
 
-    private void SetMovement()
+        if (tookDamage < 0.1f)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        tookDamage += Time.deltaTime;
+}
+
+private void SetMovement()
     {
         movementType = Random.Range(1, 5);
         
@@ -67,5 +80,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        tookDamage = 0;
     }
 }

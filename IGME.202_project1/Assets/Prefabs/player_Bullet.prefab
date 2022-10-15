@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 700, y: 0}
+  lifespan: 0.5
   hitEnemy: 0

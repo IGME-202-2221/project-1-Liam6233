@@ -7,12 +7,15 @@ public class Player : MonoBehaviour
 {
 
     public int health = 10;
+    public int score = 0;
 
     [SerializeField]
     GameObject bulletPrefab;
 
     [SerializeField]
     CollisionManager colManager;
+
+    float scoreTimer = 0;
 
     public bool isImmune = false;
     float iframes = 0;
@@ -49,6 +52,13 @@ public class Player : MonoBehaviour
         if(iframes <= 0)
         {
             isImmune = false;
+        }
+
+        scoreTimer += Time.deltaTime;
+        if(scoreTimer >= 1)
+        {
+            score++;
+            scoreTimer = 0;
         }
     }
 

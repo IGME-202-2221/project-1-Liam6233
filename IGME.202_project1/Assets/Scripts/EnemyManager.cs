@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     public CollisionManager colManager;
 
 
-    float timer = 0f;
+    float gameTimer = 0f;
     // reference to main camera
     [SerializeField]
     Camera cam;
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        gameTimer += Time.deltaTime;
         if (enemyList.Count == 0)
         {
             SpawnEnemy();
@@ -109,17 +109,17 @@ public class EnemyManager : MonoBehaviour
             }
             Enemy objectEnemyScript = newEnemy.GetComponent<Enemy>();
             enemyList.Add(objectEnemyScript);
-            colManager.AddEnemyToList(objectEnemyScript);
+            colManager.AddEnemyToList(objectEnemyScript.gameObject);
         }
     }
 
     private int GetEnemyType()
     {
-        if(timer < 10f)
+        if(gameTimer < 10f)
         {
             return 1;
         }
-        else if(timer < 20f)
+        else if(gameTimer < 20f)
         {
             return Random.Range(1, 3);
         }

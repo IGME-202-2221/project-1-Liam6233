@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9daf6d9b8a937404f9a640c78070c123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 2
   position: {x: 0, y: 0}
   movementType: 0

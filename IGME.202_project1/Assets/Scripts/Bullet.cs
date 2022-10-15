@@ -10,8 +10,10 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     Vector2 velocity;
-    
-    
+
+    [SerializeField]
+    float lifespan;
+
     float timer;
     public bool hitEnemy = false;
 
@@ -26,7 +28,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 1f)
+        if(timer > lifespan)
         {
             DestroyBullet();
         }
