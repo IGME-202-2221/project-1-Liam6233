@@ -49,13 +49,18 @@ public class Enemy : MonoBehaviour
             velocity.x = -1.5f * Time.deltaTime;
             velocity.y = -1.5f * Time.deltaTime;
         }
+        else if(movementType == 4)
+        {
+            velocity.x = -1.5f * Time.deltaTime;
+            velocity.y = 1.5f * Time.deltaTime;
+        }
         position += velocity;
         transform.position = position;
     }
 
     private void SetMovement()
     {
-        movementType = Random.Range(1, 4);
+        movementType = Random.Range(1, 5);
         
     }
 

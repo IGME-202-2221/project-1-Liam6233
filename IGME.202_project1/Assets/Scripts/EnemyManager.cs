@@ -11,11 +11,19 @@ public class EnemyManager : MonoBehaviour
     List<Enemy> enemyList;
 
     [SerializeField]
-    Enemy enemyPrefab;
+    GameObject enemy1Prefab;
+
+    [SerializeField]
+    GameObject enemy2Prefab;
+
+    [SerializeField]
+    GameObject enemy3Prefab;
 
     [SerializeField]
     public CollisionManager colManager;
 
+
+    float timer = 0f;
     // reference to main camera
     [SerializeField]
     Camera cam;
@@ -30,7 +38,8 @@ public class EnemyManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        timer += Time.deltaTime;
         if (enemyList.Count == 0)
         {
             SpawnEnemy();
@@ -79,13 +88,44 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // whenever spawn enemy is called, there is a random chance to spawn between 1 and 5 enemies
-        for(int i = 0; i < Random.Range(1,6); i++)
+        // whenever spawn enemy is called, there is a random chance to spawn between 3 and 7 enemies
+        for(int i = 0; i < Random.Range(3,8); i++)
         {
             float spawnHeight = Random.Range(-5f, 5f);
-            Enemy newEnemy = Instantiate(enemyPrefab, new Vector2(cam.transform.position.x + width / 2, spawnHeight), Quaternion.identity,transform);
-            enemyList.Add(newEnemy);
-            colManager.AddEnemyToList(newEnemy);
+            int enemyType = GetEnemyType();
+            GameObject newEnemy;
+            if(enemyType == 1)
+            {
+                newEnemy = Instantiate(enemy1Prefab, new Vector2(cam.transform.position.x + width / 2, spawnHeight), Quaternion.identity, transform);
+            }
+            else if(enemyType == 2)
+            {
+                newEnemy = Instantiate(enemy2Prefab, new Vector2(cam.transform.position.x + width / 2, spawnHeight), Quaternion.identity, transform);
+            }
+            else
+            {
+                newEnemy = Instantiate(enemy3Prefab, new Vector2(cam.transform.position.x + width / 2, spawnHeight), Quaternion.identity,transform);
+                
+            }
+            Enemy objectEnemyScript = newEnemy.GetComponent<Enemy>();
+            enemyList.Add(objectEnemyScript);
+            colManager.AddEnemyToList(objectEnemyScript);
+        }
+    }
+
+    private int GetEnemyType()
+    {
+        if(timer < 10f)
+        {
+            return 1;
+        }
+        else if(timer < 20f)
+        {
+            return Random.Range(1, 3);
+        }
+        else
+        {
+            return Random.Range(1, 4);
         }
     }
 }

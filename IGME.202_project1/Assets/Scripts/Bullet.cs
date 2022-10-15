@@ -7,18 +7,19 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
 
     Vector2 position;
+
+    [SerializeField]
     Vector2 velocity;
     
-    Bounds bulletBounds;
+    
     float timer;
     public bool hitEnemy = false;
 
     void Start()
     {
-        bulletBounds = this.GetComponent<SpriteRenderer>().bounds;
         timer = 0;
         position = transform.position;
-        velocity = new Vector2(700, 0);
+        
     }
 
     // Update is called once per frame

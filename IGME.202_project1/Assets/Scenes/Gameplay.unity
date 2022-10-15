@@ -264,7 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: []
-  enemyPrefab: {fileID: -5499363816441172338, guid: 55010ac8d5e8dd343969659afcf0f532, type: 3}
+  enemy1Prefab: {fileID: 4442115133733215337, guid: 55010ac8d5e8dd343969659afcf0f532, type: 3}
+  enemy2Prefab: {fileID: 4335407921195175855, guid: 6485f23a00be7bb4ebe708ef79b43ac8, type: 3}
+  enemy3Prefab: {fileID: 4116482383670902733, guid: 696f21e48983c3e47bf1645c8514cbd0, type: 3}
   colManager: {fileID: 608551779}
   cam: {fileID: 232173177}
 --- !u!4 &1837043971

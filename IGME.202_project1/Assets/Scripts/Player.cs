@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     CollisionManager colManager;
 
+    public bool isImmune = false;
     float iframes = 0;
     public int Health
     {
@@ -30,19 +31,24 @@ public class Player : MonoBehaviour
     {
         if(health <= 0)
         {
-            
-            Destroy(this.gameObject);
+           GetComponent<SpriteRenderer>().color = Color.clear;
         }
-        if(health > 10)
-        {
-            health = 10;
-        }
+        
 
         // early implementation of Iframes so player does not instanly die on contact with things
-        iframes += Time.deltaTime;
-        if(iframes <= 2)
+        if (isImmune)
         {
-            health++;
+            GetComponent<SpriteRenderer>().color = Color.red;
+            iframes -= Time.deltaTime;
+        }
+        else if(health > 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+       
+        if(iframes <= 0)
+        {
+            isImmune = false;
         }
     }
 
@@ -59,6 +65,6 @@ public class Player : MonoBehaviour
     public void LoseHealth()
     {
         health--;
-        iframes = 0;
+        iframes = 1;
     }
 }

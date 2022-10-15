@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8bc293291fabc47a2d5ecfe4c1e9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colManager: {fileID: 4298393264011533558, guid: 47e5675bceaf44e4ca710c697a5ba75d, type: 3}
+  velocity: {x: 700, y: 0}
+  hitEnemy: 0

@@ -32,7 +32,8 @@ public class CollisionManager : MonoBehaviour
         GameObject enemy;
         bool playerCollision;
         bool bulletCollision;
-        shipColor.color = Color.white;
+        bool playerImmune = player.GetComponent<Player>().isImmune;
+        //shipColor.color = Color.white;
         for (int i = 0; i < enemyList.Count; i++)
         {
             if (enemyList[i] != null)
@@ -48,10 +49,11 @@ public class CollisionManager : MonoBehaviour
             
             playerCollision = AABBCollision(player, enemy);
             
-            if (playerCollision)
+            if (playerCollision && !playerImmune)
             {
-                shipColor.color = Color.red;
+                //shipColor.color = Color.red;
                 ship.GetComponent<Player>().LoseHealth();
+                ship.GetComponent<Player>().isImmune = true ;
                 enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
                 enemyList[i].GetComponent<Enemy>().TakeDamage();
                 i = enemyList.Count;
