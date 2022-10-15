@@ -14,6 +14,12 @@ public class Ui : MonoBehaviour
     [SerializeField]
     GameObject player;
 
+    [SerializeField]
+    Camera cam;
+    static float camHeight;
+    float camWidth;
+
+
     GameObject playerHealth;
     GameObject playerScore;
     GameObject gameTime;
@@ -21,14 +27,20 @@ public class Ui : MonoBehaviour
     float timer = 0;
     void Start()
     {
+        camHeight = 2f * cam.orthographicSize;
+        camWidth = camHeight * cam.aspect;
+        float camLeftEdge = cam.transform.position.x - camWidth / 2;
+        Vector3 healthPosition = new Vector3(camLeftEdge + 0.5f, (cam.transform.position.y + camHeight / 2), 0);
+        Vector3 scorePosition = new Vector3(camLeftEdge + 0.5f, (cam.transform.position.y - camHeight / 2) + 1, 0);
+        Vector3 timePosition = new Vector3(camLeftEdge + 0.5f, (cam.transform.position.y + camHeight / 2) - 0.8f, 0);
         healthPrefab.text = "Health: " + player.GetComponent<Player>().health;
-        playerHealth = Instantiate(healthPrefab.gameObject, new Vector3(-8.5f, 5f, 0), Quaternion.identity, transform);
+        playerHealth = Instantiate(healthPrefab.gameObject, healthPosition, Quaternion.identity, transform);
 
         scorePrefab.text = "Score: " + player.GetComponent<Player>().score;
-        playerScore = Instantiate(scorePrefab.gameObject, new Vector3(-8.5f, -4, 0), Quaternion.identity, transform);
+        playerScore = Instantiate(scorePrefab.gameObject, scorePosition, Quaternion.identity, transform);
 
-        gameTime = Instantiate(healthPrefab.gameObject, new Vector3(-8.5f, 4.2f, 0), Quaternion.identity, transform);
-        
+        gameTime = Instantiate(healthPrefab.gameObject, timePosition, Quaternion.identity, transform);
+
         
     }
 

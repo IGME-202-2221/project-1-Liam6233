@@ -316,6 +316,7 @@ MonoBehaviour:
   healthPrefab: {fileID: 2313693580510252796, guid: 62baca8cedcfaae4eabd1207b2eee225, type: 3}
   scorePrefab: {fileID: 5999068228341953416, guid: 1b4597940a300fe4ea62158d139accc5, type: 3}
   player: {fileID: 1263630545}
+  cam: {fileID: 232173177}
 --- !u!4 &1840867974
 Transform:
   m_ObjectHideFlags: 0
