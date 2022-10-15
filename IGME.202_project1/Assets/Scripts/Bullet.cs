@@ -11,12 +11,14 @@ public class Bullet : MonoBehaviour
     
     Bounds bulletBounds;
     float timer;
+    public bool hitEnemy = false;
+
     void Start()
     {
         bulletBounds = this.GetComponent<SpriteRenderer>().bounds;
         timer = 0;
         position = transform.position;
-        velocity = new Vector2(7, 0);
+        velocity = new Vector2(700, 0);
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class Bullet : MonoBehaviour
         timer += Time.deltaTime;
         if(timer > 1f)
         {
-            Destroy(gameObject);
+            DestroyBullet();
         }
 
         position += velocity * Time.deltaTime;
@@ -37,5 +39,10 @@ public class Bullet : MonoBehaviour
     public void AddToTimer()
     {
         timer += 100000000f;
+    }
+
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
     }
 }

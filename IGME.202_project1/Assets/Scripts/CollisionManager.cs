@@ -65,10 +65,9 @@ public class CollisionManager : MonoBehaviour
             {
                 if(bulletList[j] != null)
                 {
-                    bulletCollision = AABBCollision(bulletList[j], enemy);
+                    bulletCollision = PointToShape(bulletList[j], enemy);
                     if (bulletCollision)
                     {
-                        enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
                         enemyList[i].GetComponent<Enemy>().TakeDamage();
                         bulletList[j].GetComponent<Bullet>().AddToTimer();
                     }
@@ -94,6 +93,25 @@ public class CollisionManager : MonoBehaviour
         }
         return areColliding;
     }
+
+
+    public bool PointToShape(GameObject bullet, GameObject enemy)
+    {
+        bool areColliding = false;
+        bool bulletHit = bullet.GetComponent<Bullet>().hitEnemy;
+        Bounds bulletBox = bullet.GetComponent<SpriteRenderer>().bounds;
+        Bounds obsticalBox = enemy.GetComponent<SpriteRenderer>().bounds;
+
+        if (!bulletHit && obsticalBox.max.y > bulletBox.center.y &&
+            obsticalBox.min.y < bulletBox.center.y)
+        {
+            areColliding = true;
+            bullet.GetComponent<Bullet>().hitEnemy = true;
+        }
+        return areColliding;
+    }
+
+
 
     public void AddEnemyToList(Enemy obj)
     {
