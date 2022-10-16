@@ -61,7 +61,8 @@ Movement Patterns:
 ## Known Issues
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
-*FIXED* Enemy List in Collision Manager will occasionally get Index Out of bounds range error. However I don't know how to trigger it and it does not crash the program. it is also infrequent so I would just ignore them. I got 2 after 5 minutes of playing.
+
+- *FIXED* Enemy List in Collision Manager will occasionally get Index Out of bounds range error. However I don't know how to trigger it and it does not crash the program. it is also infrequent so I would just ignore them. I got 2 after 5 minutes of playing.
 
 - Small bug where due to how collision works. when shooting enemies the bullets sometimes hit enemys behind other enemies first due to their position in the enemy list where enemies closer to index 0 get hit first even if they are behind another enemy. this could be solved by sorting list via x position but I don't have time to do that. 
 
