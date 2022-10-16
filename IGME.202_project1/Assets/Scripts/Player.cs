@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     float scoreTimer = 0;
 
+    float shotTimer = 0;
+
     public bool isImmune = false;
     float iframes = 0;
  
@@ -65,15 +67,17 @@ public class Player : MonoBehaviour
             score++;
             scoreTimer = 0;
         }
+        shotTimer += Time.deltaTime;
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
         // fires a bullet when player presses correct button
         Vector2 bulletPosition = new Vector2(transform.position.x + GetComponent<SpriteRenderer>().bounds.size.x/2, transform.position.y);
-        if (context.performed)
+        if (context.performed && shotTimer > 0.05f)
         {
             colManager.AddBulletToList(Instantiate(bulletPrefab, bulletPosition, Quaternion.identity));
+            shotTimer = 0;
         }
     }
 
