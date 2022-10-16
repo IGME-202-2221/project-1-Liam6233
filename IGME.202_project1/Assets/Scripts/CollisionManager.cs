@@ -55,7 +55,12 @@ public class CollisionManager : MonoBehaviour
                 ship.GetComponent<Player>().LoseHealth();
                 ship.GetComponent<Player>().isImmune = true ;
                 enemyList[i].GetComponent<SpriteRenderer>().color = Color.red;
-                enemyList[i].GetComponent<Enemy>().TakeDamage();
+                if (enemyList[i].GetComponent<Enemy>())
+                {
+                    enemyList[i].GetComponent<Enemy>().KillEnemy();
+                }
+
+                
                 i = enemyList.Count;
             }
             else 
@@ -68,7 +73,7 @@ public class CollisionManager : MonoBehaviour
                 if(bulletList[j] != null)
                 {
                     bulletCollision = PointToShape(bulletList[j], enemy);
-                    if (bulletCollision)
+                    if (bulletCollision && enemyList[i].GetComponent<Enemy>())
                     {
                         enemyList[i].GetComponent<Enemy>().TakeDamage();
                         bulletList[j].GetComponent<Bullet>().AddToTimer();
@@ -110,6 +115,7 @@ public class CollisionManager : MonoBehaviour
             areColliding = true;
             bullet.GetComponent<Bullet>().hitEnemy = true;
             ship.GetComponent<Player>().score += 5;
+            ship.GetComponent<Player>().healthScore += 5;
         }
         return areColliding;
     }

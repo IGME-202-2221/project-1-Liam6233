@@ -13,6 +13,7 @@ public class ShooterEnemy : MonoBehaviour
 
     float timer = 0;
 
+    public bool readyToShoot = false;
     void Start()
     {
         
@@ -24,10 +25,16 @@ public class ShooterEnemy : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= shotInterval)
         {
-            Vector2 bulletPosition = new Vector2(transform.position.x - GetComponent<SpriteRenderer>().bounds.size.x / 2, transform.position.y);
-            
-            Instantiate(enemyBulletPrefab, bulletPosition, Quaternion.identity);
+            readyToShoot = true;
             timer = 0;
         }
+    }
+
+
+    public GameObject ShootBullet()
+    {
+        Vector2 bulletPosition = new Vector2(transform.position.x - GetComponent<SpriteRenderer>().bounds.size.x / 2, transform.position.y);
+
+        return Instantiate(enemyBulletPrefab, bulletPosition, Quaternion.identity);
     }
 }

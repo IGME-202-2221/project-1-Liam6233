@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9daf6d9b8a937404f9a640c78070c123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 4
+  type: 2
   position: {x: 0, y: 0}
   movementType: 0
 --- !u!114 &4245813812164583069
@@ -114,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBulletPrefab: {fileID: 1784463931799954979, guid: 77ae55101519d2a41a190050f4fc3dd0, type: 3}
-  shotInterval: 1
-  colManager: {fileID: 7144565624752243355, guid: 47e5675bceaf44e4ca710c697a5ba75d, type: 3}
+  shotInterval: 1.8
+  readyToShoot: 0

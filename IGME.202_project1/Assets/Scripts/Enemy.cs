@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int health;
 
+    [SerializeField]
+    public int type;
+
     float tookDamage = 1;
 
     public Vector2 position;
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
     public int Health
     {
         get { return health; }
+        set { health = value; }
     }
     float randVelAddition;
     void Start()
@@ -80,6 +84,12 @@ private void SetMovement()
     public void TakeDamage()
     {
         health--;
+        tookDamage = 0;
+    }
+
+    public void KillEnemy()
+    {
+        health = 0;
         tookDamage = 0;
     }
 }

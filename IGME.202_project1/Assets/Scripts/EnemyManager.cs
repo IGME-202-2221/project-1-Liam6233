@@ -40,43 +40,51 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         gameTimer += Time.deltaTime;
+
         if (enemyList.Count == 0)
         {
             SpawnEnemy();
         }
         for(int i = 0; i < enemyList.Count; i++)
         {
-            
-            if(i< 0 || i >= enemyList.Count)
-            {
-                i = 0;
-            }
-            
-            if (enemyList[i].position.x <= cam.transform.position.x - width / 2)
-            {
-                clearEnemy(i);
-                
-            }
-            else if (enemyList[i].position.x >= cam.transform.position.x + width / 2)
-            {
-                enemyList[i].position.x = cam.transform.position.x + width / 2;
-            }
 
-            else if (enemyList[i].position.y < cam.transform.position.y - height / 2)
+            if (enemyList.Count > 0)
             {
-                enemyList[i].position.y = cam.transform.position.y + height / 2;
-            }
+                if (enemyList[i].position.x <= cam.transform.position.x - width / 2)
+                {
+                    enemyList[i].Health = 0;
 
-            else if (enemyList[i].position.y > cam.transform.position.y + height / 2)
-            {
-                enemyList[i].position.y = cam.transform.position.y - height / 2;
-            }
+                }
+                else if (enemyList[i].position.x >= cam.transform.position.x + width / 2)
+                {
+                    enemyList[i].position.x = cam.transform.position.x + width / 2;
+                }
 
-            if (enemyList.Count != 0 && enemyList[i].Health <= 0)
-            {
-                clearEnemy(i);
-            }
+                else if (enemyList[i].position.y < cam.transform.position.y - height / 2)
+                {
+                    enemyList[i].position.y = cam.transform.position.y + height / 2;
+                }
 
+                else if (enemyList[i].position.y > cam.transform.position.y + height / 2)
+                {
+                    enemyList[i].position.y = cam.transform.position.y - height / 2;
+                }
+
+                // getting enemies that can shoot to shoot
+                if (enemyList[i].type == 2 || enemyList[i].type == 3)
+                {
+                    if (enemyList[i].GetComponent<ShooterEnemy>().readyToShoot)
+                    {
+                        colManager.AddEnemyToList(enemyList[i].GetComponent<ShooterEnemy>().ShootBullet());
+                        enemyList[i].GetComponent<ShooterEnemy>().readyToShoot = false;
+                    }
+                }
+
+                if (enemyList[i].Health <= 0)
+                {
+                    clearEnemy(i);
+                }
+            }
         }
     }
 

@@ -98,5 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  type: 1
   position: {x: 0, y: 0}
   movementType: 0

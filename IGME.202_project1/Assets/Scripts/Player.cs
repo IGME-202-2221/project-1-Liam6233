@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
 
     public int health = 10;
     public int score = 0;
+
+    public int healthScore = 0;
+
 
     [SerializeField]
     GameObject bulletPrefab;
@@ -19,14 +23,11 @@ public class Player : MonoBehaviour
 
     public bool isImmune = false;
     float iframes = 0;
-    public int Health
-    {
-        set { health = value; }
-    }
+ 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -34,10 +35,14 @@ public class Player : MonoBehaviour
     {
         if(health <= 0)
         {
-           GetComponent<SpriteRenderer>().color = Color.clear;
+            SceneManager.LoadScene("GameOver");
         }
         
-
+        if(healthScore >= 80 && health < 10)
+        {
+            health++;
+            healthScore = 0;
+        }
         // early implementation of Iframes so player does not instanly die on contact with things
         if (isImmune)
         {
